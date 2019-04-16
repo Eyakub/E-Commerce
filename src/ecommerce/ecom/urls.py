@@ -5,8 +5,7 @@ from .views import home_page, \
     about_page, contact_page, \
     login_page, register_page
 
-from ..products.views import ProductListView, \
-    product_list_view, ProductDetailView, product_detail_view
+from ..products import views
 
 urlpatterns = [
     url(r'^$', home_page),
@@ -14,8 +13,8 @@ urlpatterns = [
     url('contact/', contact_page),
     url('login/', login_page),
     url('register/', register_page),
-    url('products/', ProductListView.as_view()),
-    url('products-fbv/', product_list_view),
-    url(r'products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
-    url(r"products-fbv/(?P<pk>\d+)/$", product_detail_view),
+    url('products/', views.ProductListView.as_view()),
+    url('products-fbv/', views.product_list_view),
+    url(r'^products-details/(?P<pk>[0-9]+)/$', views.ProductDetailView.as_view(), name='product-details'),
+    url(r'products-details-fbv/(?P<pk>[0-9]+)/$', views.product_detail_view, name='product-details'),
 ]

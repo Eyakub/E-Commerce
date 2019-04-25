@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=H:\Programming\Python\DjangoWeb\E-Commerce\venv"
+set "VIRTUAL_ENV=D:\Workspace\E-Commerce\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

@@ -1,4 +1,4 @@
-#!h:\programming\python\djangoweb\e-commerce\venv\scripts\python.exe
+#!d:\workspace\e-commerce\venv\scripts\python.exe
 from django.core import management
 
 if __name__ == "__main__":

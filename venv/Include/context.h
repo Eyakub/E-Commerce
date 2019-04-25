@@ -22,19 +22,19 @@ typedef struct _pycontexttokenobject PyContextToken;
 #define PyContextToken_CheckExact(o) (Py_TYPE(o) == &PyContextToken_Type)
 
 
-PyAPI_FUNC(PyObject *) PyContext_New(void);
-PyAPI_FUNC(PyObject *) PyContext_Copy(PyObject *);
-PyAPI_FUNC(PyObject *) PyContext_CopyCurrent(void);
+PyAPI_FUNC(PyContext *) PyContext_New(void);
+PyAPI_FUNC(PyContext *) PyContext_Copy(PyContext *);
+PyAPI_FUNC(PyContext *) PyContext_CopyCurrent(void);
 
-PyAPI_FUNC(int) PyContext_Enter(PyObject *);
-PyAPI_FUNC(int) PyContext_Exit(PyObject *);
+PyAPI_FUNC(int) PyContext_Enter(PyContext *);
+PyAPI_FUNC(int) PyContext_Exit(PyContext *);
 
 
 /* Create a new context variable.
 
    default_value can be NULL.
 */
-PyAPI_FUNC(PyObject *) PyContextVar_New(
+PyAPI_FUNC(PyContextVar *) PyContextVar_New(
     const char *name, PyObject *default_value);
 
 
@@ -54,19 +54,21 @@ PyAPI_FUNC(PyObject *) PyContextVar_New(
    '*value' will be a new ref, if not NULL.
 */
 PyAPI_FUNC(int) PyContextVar_Get(
-    PyObject *var, PyObject *default_value, PyObject **value);
+    PyContextVar *var, PyObject *default_value, PyObject **value);
 
 
 /* Set a new value for the variable.
    Returns NULL if an error occurs.
 */
-PyAPI_FUNC(PyObject *) PyContextVar_Set(PyObject *var, PyObject *value);
+PyAPI_FUNC(PyContextToken *) PyContextVar_Set(
+    PyContextVar *var, PyObject *value);
 
 
 /* Reset a variable to its previous value.
    Returns 0 on success, -1 on error.
 */
-PyAPI_FUNC(int) PyContextVar_Reset(PyObject *var, PyObject *token);
+PyAPI_FUNC(int) PyContextVar_Reset(
+    PyContextVar *var, PyContextToken *token);
 
 
 /* This method is exposed only for CPython tests. Don not use it. */

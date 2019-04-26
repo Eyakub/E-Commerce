@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'H:\Programming\Python\DjangoWeb\E-Commerce\venv'; else echo '/H/Programming/Python/DjangoWeb/E-Commerce/venv'; fi;)"
+VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'D:\Workspace\E-Commerce\venv'; else echo '/D/Workspace/E-Commerce/venv'; fi;)"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -9,12 +9,14 @@ from ..products import views
 
 urlpatterns = [
     url(r'^$', home_page),
-    url('about/', about_page),
-    url('contact/', contact_page),
-    url('login/', login_page),
-    url('register/', register_page),
-    url('products/', views.ProductListView.as_view()),
-    url('products-fbv/', views.product_list_view),
+    url('about/$', about_page),
+    url('contact/$', contact_page),
+    url('login/$', login_page),
+    url('register/$', register_page),
+    url('featured/$', views.ProductFeaturedListView.as_view()),
+    url('featured/(?P<pk>[0-9]+)/$', views.ProductFeaturedDetailView.as_view()),
+    url('products/$', views.ProductListView.as_view()),
+    url('products-fbv/$', views.product_list_view),
     url(r'^products-details/(?P<pk>[0-9]+)/$', views.ProductDetailView.as_view(), name='product-details'),
     url(r'products-details-fbv/(?P<pk>[0-9]+)/$', views.product_detail_view, name='product-details'),
 ]

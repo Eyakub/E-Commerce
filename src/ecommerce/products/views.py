@@ -4,7 +4,15 @@ from django.views.generic.list import ListView
 from django.shortcuts import render, get_object_or_404
 
 from .models import Product
+
+
 # Create your views here.
+class ProductFeaturedListView(ListView):
+    template_name = 'products/list.html'
+
+    def get_queryset(self):
+        request = self.request
+        return Product.objects.all()
 
 
 # class base View
@@ -35,19 +43,19 @@ class ProductDetailView(DetailView):
     queryset = Product.objects.all()
     template_name = "products/detail.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # print(context)
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     # print(context)
+    #     return context
 
-    def get_object(self, *args, **kwargs):
-        request = self.request
-        pk = self.kwargs.get('pk')
-
-        instance = Product.objects.get_by_id(pk)
-        if instance is None:
-            raise Http404("Product Doesn't match")
-        return instance
+    # def get_object(self, *args, **kwargs):
+    #     request = self.request
+    #     pk = self.kwargs.get('pk')
+    #
+    #     instance = Product.objects.get_by_id(pk)
+    #     if instance is None:
+    #         raise Http404("Product Doesn't match")
+    #     return instance
 
     # def get_queryset(self, *args, **kwargs):
     #     request = self.request
@@ -56,20 +64,13 @@ class ProductDetailView(DetailView):
 
 
 # function base View
-def product_detail_view(request, pk, *args, **kwargs):
-    print('product id: ' + pk)
-    # instance = Product.objects.get(id=pk)
-    # instance = get_object_or_404(Product, pk=pk)
-    instance = Product.objects.get_by_id(pk)
-    if instance is None:
-        raise Http404("Product doesn't exist")
-
-    # qs = Product.objects.filter(id=pk)
-    #
-    # if qs.exists() and qs.count() == 1:
-    #     instance = qs.first()
-    # else:
-    #     raise Http404("Product doesn't exist")
+def product_detail_view(request, pk=None, *args, **kwargs):
+    qs = Product.objects.filter(id=pk)
+    print(qs)
+    if qs.exists() and qs.count() == 1:
+        instance = qs.first()
+    else:
+        raise Http404('Product doesnt exist')
     context = {
         'object': instance
     }

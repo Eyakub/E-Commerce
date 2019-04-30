@@ -18,10 +18,18 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
+from .views import home_page, \
+    about_page, contact_page, \
+    login_page, register_page
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test/', include('ecommerce.ecom.urls')),
+    url(r'^$', home_page),
+    url('about/$', about_page),
+    url('contact/$', contact_page),
+    url('login/$', login_page),
+    url('register/$', register_page),
     path('products/', include('ecommerce.products.urls')),
 ]
 

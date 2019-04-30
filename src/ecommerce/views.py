@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from .forms import ContactForm, LoginForm, RegisterForm
+from ecommerce.ecom.forms import ContactForm, LoginForm, RegisterForm
 
 
 def home_page(request):
@@ -24,7 +24,8 @@ def contact_page(request):
     context = {
         'title': 'Contact',
         'content': 'Welcome to the contact page.',
-        'form': contact_form
+        'form': contact_form,
+        'brand': 'new Brand name',
     }
 
     if contact_form.is_valid():

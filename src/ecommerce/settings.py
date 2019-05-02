@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ecommerce.ecom',
     'ecommerce.products',
     'rest_framework',
+    'clear_cache',
 ]
 
 REST_FRAMEWORK = {

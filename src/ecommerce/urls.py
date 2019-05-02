@@ -25,12 +25,12 @@ from .views import home_page, \
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', home_page),
-    url('about/$', about_page),
-    url('contact/$', contact_page),
-    url('login/$', login_page),
-    url('register/$', register_page),
-    path('products/', include('ecommerce.products.urls')),
+    url(r'^$', home_page, name='home'),
+    url('about/$', about_page, name='about'),
+    url('contact/$', contact_page, name='contact'),
+    url('login/$', login_page, name='login'),
+    url('register/$', register_page, name='register'),
+    path('products/', include(('ecommerce.products.urls', 'ecommerce.products'), namespace='product')),
 ]
 
 if settings.DEBUG:

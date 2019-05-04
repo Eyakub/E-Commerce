@@ -1,5 +1,10 @@
-<form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" class="btn btn-primary"/>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Register</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary"/>
+    </form>
+{% endblock %}

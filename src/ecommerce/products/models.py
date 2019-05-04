@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.urls import reverse
 import os
 import random
@@ -35,6 +36,12 @@ class ProductQuerySet(models.query.QuerySet):
     def active(self):
         return self.filter(active=True)
 
+    def search(self, query):
+        lookups = Q(title__icontains=query) | \
+                  Q(description__icontains=query) | \
+                  Q(price__icontains=query)
+        return self.filter(lookups).distinct()
+
 
 # custom model manager
 class ProductManager(models.Manager):
@@ -52,6 +59,9 @@ class ProductManager(models.Manager):
         if qs.count() == 1:
             return qs.first()
         return None
+
+    def search(self, query):
+        return self.get_queryset().active().search(query)
 
 
 # Create your models here.

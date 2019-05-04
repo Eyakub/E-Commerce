@@ -33,6 +33,7 @@ urlpatterns = [
     url('register/$', register_page, name='register'),
     url('bootstrap/$', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('products/', include(('ecommerce.products.urls', 'ecommerce.products'), namespace='product')),
+    path('search/', include(('ecommerce.search.urls', 'ecommerce.search'), namespace='search')),
 ]
 
 if settings.DEBUG:

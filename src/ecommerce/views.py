@@ -6,6 +6,9 @@ from ecommerce.ecom.forms import ContactForm, LoginForm, RegisterForm
 
 
 def home_page(request):
+    # if not request.user.is_authenticated():
+    #     return LoginForm
+    # print(request.session.get('first_name', 'Unknown'))   # GETTER of SESSION
     context = {
         'title': 'Hello world',
         'name': 'MD. Eyakub Sorkar',

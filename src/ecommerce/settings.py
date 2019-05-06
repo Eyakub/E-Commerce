@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # our app
     'ecommerce.ecom',
     'ecommerce.products',
     'ecommerce.search',
+    'ecommerce.tags',
+
     'rest_framework',
     'clear_cache',
 ]

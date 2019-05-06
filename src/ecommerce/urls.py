@@ -23,6 +23,7 @@ from .views import home_page, \
     about_page, contact_page, \
     login_page, register_page
 
+from ecommerce.carts.views import cart_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +35,7 @@ urlpatterns = [
     url('bootstrap/$', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('products/', include(('ecommerce.products.urls', 'ecommerce.products'), namespace='product')),
     path('search/', include(('ecommerce.search.urls', 'ecommerce.search'), namespace='search')),
+    path('cart/', cart_home, name='cart')
 ]
 
 if settings.DEBUG:

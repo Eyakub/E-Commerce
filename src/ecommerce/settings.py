@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ecommerce.products',
     'ecommerce.search',
     'ecommerce.tags',
+    'ecommerce.carts',
 
     'rest_framework',
     'clear_cache',

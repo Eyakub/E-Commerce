@@ -26,7 +26,7 @@ exit()
 
 
 # Session 2
-from products.models import Product
+from ecommerce.products.models import Product
 
 qs = Product.object.all()
 print(qs)
@@ -37,6 +37,7 @@ tshirt.description
 tshirt.tag
 """
 raises an error because the product model doesn't have a field "tag"
+Product object has no attribute 'tag'
 """
 
 tshirt.tags
@@ -55,3 +56,31 @@ Returns an actual queryset of the Tag model related to this product
 """
 
 tshirt.tag_set.filter(title__icontains='black')
+
+
+# OR queries
+# queryset = User.objects.filter(
+#     first_name__startwith='E'
+#     ) | User.objects.filter(
+#     last_name__startwith='S'
+# )
+# or by importing (from django.db.models import Q)
+# qs = User.objects.filter(Q(first_name__startwith='E') |
+#                          Q(last_name__startwith='S'))
+
+# AND queries
+# queryset = User.objects.filter(
+#     first_name__startwith='E'
+#     ) & User.objects.filter(
+#     last_name__startwith='S'
+# )
+#
+# queryset1 = User.objects.filter(
+#     first_name__startwith='E',
+#     last_name__startwith='S'
+# )
+#
+# or by importing (from django.db.models import Q)
+# queryset2 = User.objects.filter(Q(first_name__startwith='E') &
+#                          Q(last_name__startwith='S'))
+

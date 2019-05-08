@@ -35,7 +35,7 @@ urlpatterns = [
     url('bootstrap/$', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('products/', include(('ecommerce.products.urls', 'ecommerce.products'), namespace='product')),
     path('search/', include(('ecommerce.search.urls', 'ecommerce.search'), namespace='search')),
-    path('cart/', cart_home, name='cart')
+    path('cart/', include(('ecommerce.carts.urls', 'ecommerce.carts'), namespace='cart'))
 ]
 
 if settings.DEBUG:

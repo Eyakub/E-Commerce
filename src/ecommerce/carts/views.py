@@ -35,7 +35,6 @@ def cart_home(request):
     #     cart_obj = Cart.objects.new(user=request.user)  # this should handle user authenticated or not
     #     request.session['cart_id'] = cart_obj.id
 
-
     # print(request.session)  # on the request
     # print(dir(request.session))
     # request.session.set_expiry(300) # 5 minutes
@@ -59,5 +58,6 @@ def cart_update(request):
             cart_obj.products.remove(product_obj)
         else:
             cart_obj.products.add(product_obj)
-
+        request.session['cart_items'] = cart_obj.products.count()
+        print(cart_obj.products.count())
     return redirect('cart:home')

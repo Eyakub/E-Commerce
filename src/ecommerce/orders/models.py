@@ -1,6 +1,6 @@
 from django.db import models
-from ecommerce.carts.models import Cart
-from ecommerce.utils import unique_order_id_generator
+from src.ecommerce.carts.models import Cart
+from src.ecommerce.utils import unique_order_id_generator
 from django.db.models.signals import pre_save, post_save
 ORDER_STATUS_CHOICES = (
     ('created', 'Created'),
@@ -35,7 +35,7 @@ class Order(models.Model):
 
 def pre_save_create_oder_id(sender, instance, *args, **kwargs):
     if not instance.order_id:
-        instance.oder_id = unique_order_id_generator(instance)
+        instance.order_id = unique_order_id_generator(instance)
         print('Pre Save: ' + instance.order_id)
 
 

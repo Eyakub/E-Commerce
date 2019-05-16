@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from ecommerce.products.models import Product
+from src.ecommerce.products.models import Product
 
 
 # Create your views here.

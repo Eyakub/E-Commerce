@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from ecommerce.ecom.forms import ContactForm, LoginForm, RegisterForm
+from src.ecommerce.ecom.forms import ContactForm, LoginForm, RegisterForm
 
 
 def home_page(request):

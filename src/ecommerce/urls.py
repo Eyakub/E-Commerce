@@ -23,7 +23,7 @@ from .views import home_page, \
     about_page, contact_page, \
     login_page, register_page
 
-from src.ecommerce.carts.views import cart_home
+from ecommerce.carts.views import cart_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),

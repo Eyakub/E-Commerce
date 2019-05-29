@@ -1,0 +1,4 @@
+*.py
+
+!.gitignore
+!__init__.py

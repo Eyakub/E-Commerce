@@ -19,7 +19,7 @@ class Order(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     status = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
     shipping_total = models.DecimalField(default=5.99, max_digits=100, decimal_places=2)
-    order_total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
 
     def __str__(self):
         return self.order_id
@@ -33,13 +33,13 @@ class Order(models.Model):
         return new_total
 
 
-def pre_save_create_oder_id(sender, instance, *args, **kwargs):
+def pre_save_create_order_id(sender, instance, *args, **kwargs):
     if not instance.order_id:
         instance.order_id = unique_order_id_generator(instance)
         print('Pre Save: ' + instance.order_id)
 
 
-pre_save.connect(pre_save_create_oder_id, sender=Order)
+pre_save.connect(pre_save_create_order_id, sender=Order)
 
 
 def post_save_cart_total(sender, instance, created, *args, **kwargs):
@@ -57,7 +57,9 @@ post_save.connect(post_save_cart_total, sender=Cart)
 
 
 def post_save_order(sender, instance, created, *args, **kwargs):
+    print("running")
     if created:
+        print("Updating ")
         instance.update_total()
 
 

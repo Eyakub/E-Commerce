@@ -19,10 +19,11 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf.urls import include, url
+from django.contrib.auth.views import LogoutView
 from .views import home_page, \
-    about_page, contact_page, \
-    login_page, register_page
+    about_page, contact_page
 
+from ecommerce.accounts.views import login_page, register_page
 from ecommerce.carts.views import cart_home
 
 urlpatterns = [
@@ -31,6 +32,7 @@ urlpatterns = [
     url('about/$', about_page, name='about'),
     url('contact/$', contact_page, name='contact'),
     url('login/$', login_page, name='login'),
+    url('logout/$', LogoutView.as_view(), name='logout'),
     url('register/$', register_page, name='register'),
     url('bootstrap/$', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('products/', include(('ecommerce.products.urls', 'ecommerce.products'), namespace='product')),

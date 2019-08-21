@@ -6,10 +6,10 @@ from django.db.models.signals import post_save
 
 User = settings.AUTH_USER_MODEL
 
-# abc@team.com ---> 10000 or moe billing profiles
+# abc@team.com ---> 10000 or more billing profiles
 # user abc@abc.com ---> 1 billing profile
 class BillingProfile(models.Model):
-    user        = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    user        = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     email       = models.EmailField()
     active      = models.BooleanField(default=True)
     update      = models.DateTimeField(auto_now=True)

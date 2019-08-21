@@ -1,5 +1,5 @@
-import os
+# import os
 
-if os.name == 'nt':
-    import pymysql
-    pymysql.install_as_MySQLdb()
+# if os.name == 'nt':
+#     import pymysql
+#     pymysql.install_as_MySQLdb()

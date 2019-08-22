@@ -79,7 +79,10 @@ def checkout_home(request):
     login_form = LoginForm()
     if user.is_authenticated:
         billing_profile, billing_profile_created = BillingProfile.objects.get_or_create(user=user, email=user.email)
-        
+        print('total>>>>>>>>>>>>>>', BillingProfile.objects.get_or_create(user=user, email=user.email))
+        print('billing_profile>>>>>>>>', billing_profile)
+        print('billing_profile_created>>>>>>>>', billing_profile_created)
+
     context = {
         "object": order_obj,
         "billing_profile": billing_profile,

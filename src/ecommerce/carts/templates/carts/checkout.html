@@ -14,17 +14,16 @@
 
     <div class="col-12 col-md-6">
         Continue as Guest
-        {% url "guest_register" as guest_register_url%}
-        {{ guest_form }}
+        {% url "guest_register" as guest_register_url %}
         {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
     </div>
 </div>
 {% else %}
-<h1>Checkout</h1>
+    <h1>Checkout</h1>
 
-<p>Cart total: {{ object.cart.total }}</p>
-<p>Shipping total: {{ object.shipping_total }}</p>
-<p>Order total: {{ object.total }}</p>
+    <p>Cart total: {{ object.cart.total }}</p>
+    <p>Shipping total: {{ object.shipping_total }}</p>
+    <p>Order total: {{ object.total }}</p>
 
 {% endif %}
 {% endblock %}

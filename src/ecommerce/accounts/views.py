@@ -19,7 +19,9 @@ def guest_register_view(request):
     if form.is_valid():
         print(form.cleaned_data)
         email = form.cleaned_data.get('email')
+        print('email...', email)
         new_guest_email = GuestEmail.objects.create(email=email)
+        print('new guest email...', new_guest_email)
         request.session['guest_email_id'] = new_guest_email.id
         if is_safe_url(redirect_path, request.get_host()):
             return redirect(redirect_path)

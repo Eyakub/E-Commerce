@@ -23,7 +23,7 @@ from django.contrib.auth.views import LogoutView
 from .views import home_page, \
     about_page, contact_page
 
-from ecommerce.accounts.views import login_page, register_page
+from ecommerce.accounts.views import login_page, register_page, guest_register_view
 from ecommerce.carts.views import cart_home
 
 urlpatterns = [
@@ -32,6 +32,7 @@ urlpatterns = [
     url('about/$', about_page, name='about'),
     url('contact/$', contact_page, name='contact'),
     url('login/$', login_page, name='login'),
+    url('register/login/$', guest_register_view, name='guest_register'),
     url('logout/$', LogoutView.as_view(), name='logout'),
     url('register/$', register_page, name='register'),
     url('bootstrap/$', TemplateView.as_view(template_name='bootstrap/example.html')),

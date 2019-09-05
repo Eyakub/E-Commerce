@@ -1,7 +1,7 @@
 
     <form method="POST" action="{% if action_url %} {{ action_url }} {% else %} {% url "login" %} {% endif %}">
         {% csrf_token %}
-        {% if next_rul %}
+        {% if next_url %}
             <input type="hidden" name="next" value="{{ next_url }}">
         {% endif %}
         {{ form }}
